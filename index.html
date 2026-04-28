@@ -5,73 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>風險配置工具｜手機版</title>
   <style>
+    :root {
+      --bg: #17120d;
+      --surface: #251c14;
+      --surface-2: #30251a;
+      --card: #efe7d8;
+      --card-soft: #e5dac7;
+      --cream: #f7f0e3;
+      --text: #f6efe2;
+      --text-dark: #241a11;
+      --muted: rgba(246, 239, 226, 0.58);
+      --muted-dark: rgba(36, 26, 17, 0.56);
+      --line: rgba(214, 172, 95, 0.22);
+      --gold: #c89b4f;
+      --gold-soft: #e0c38a;
+      --green: #263f2b;
+      --green-soft: #6d7d48;
+      --brown: #6d4b32;
+      --wine: #5c1f22;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
     * {
       box-sizing: border-box;
     }
 
+    html,
     body {
+      width: 100%;
       margin: 0;
+      overflow-x: hidden;
+    }
+
+    body {
       font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background: #ddd9d4;
-      color: #171717;
+      background:
+        radial-gradient(circle at top left, rgba(200, 155, 79, 0.18), transparent 32%),
+        linear-gradient(145deg, #17120d 0%, #241a12 46%, #11160f 100%);
+      color: var(--text);
     }
 
     .page {
       width: 100%;
       min-height: 100vh;
-      padding: 18px 14px;
+      padding: 14px 10px;
+      overflow-x: hidden;
     }
 
     .dashboard {
       width: 100%;
       max-width: 430px;
       margin: 0 auto;
-      border-radius: 28px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      background: #fff;
-      padding: 16px;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.14);
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+        var(--surface);
+      padding: 12px;
+      box-shadow: 0 24px 60px var(--shadow);
+      overflow: hidden;
     }
 
     .tabs {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
-      overflow-x: auto;
       padding-bottom: 14px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      scrollbar-width: none;
-    }
-
-    .tabs::-webkit-scrollbar {
-      display: none;
-    }
-
-    .tab,
-    .upload-pill {
-      flex: 0 0 auto;
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
+      border-bottom: 1px solid var(--line);
     }
 
     .tab {
-      border: 1px solid rgba(0, 0, 0, 0.14);
-      color: rgba(0, 0, 0, 0.68);
-      background: #fff;
+      width: 100%;
+      border: 1px solid rgba(224, 195, 138, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 9px 6px;
+      color: rgba(246, 239, 226, 0.72);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .tab.active {
-      border-color: #4f4b48;
-      background: #4f4b48;
-      color: #fff;
+      border-color: rgba(224, 195, 138, 0.88);
+      background: linear-gradient(135deg, #e0c38a 0%, #b98539 100%);
+      color: #24180d;
+      box-shadow: 0 8px 20px rgba(200, 155, 79, 0.22);
     }
 
     .upload-pill {
-      background: #ece8e2;
-      color: rgba(0, 0, 0, 0.58);
-      letter-spacing: 0.02em;
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(224, 195, 138, 0.18);
+      background: rgba(255, 255, 255, 0.055);
+      padding: 10px 14px;
+      color: rgba(246, 239, 226, 0.62);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
     }
 
     .summary-grid {
@@ -84,8 +129,12 @@
     .summary-card {
       min-height: 118px;
       border-radius: 18px;
-      background: #f4f1ec;
+      border: 1px solid rgba(224, 195, 138, 0.18);
+      background:
+        linear-gradient(160deg, rgba(247, 240, 227, 0.98), rgba(229, 218, 199, 0.94));
       padding: 15px;
+      min-width: 0;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
     .summary-card .label {
@@ -93,7 +142,7 @@
       line-height: 1.35;
       font-weight: 800;
       letter-spacing: 0.03em;
-      color: rgba(0, 0, 0, 0.45);
+      color: rgba(36, 26, 17, 0.48);
     }
 
     .summary-card .value {
@@ -102,26 +151,28 @@
       line-height: 1.05;
       font-weight: 900;
       letter-spacing: -0.05em;
+      word-break: keep-all;
+      color: var(--text-dark);
     }
 
     .summary-card .sub {
       margin-top: 6px;
       font-size: 12px;
       line-height: 1.45;
-      color: rgba(0, 0, 0, 0.55);
-    }
-
-    .content-grid {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+      color: var(--muted-dark);
     }
 
     .panel {
-      border-radius: 24px;
-      background: #f4f1ec;
-      padding: 16px;
+      width: 100%;
+      min-width: 0;
+      margin-top: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(224, 195, 138, 0.18);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+        var(--surface-2);
+      padding: 14px;
+      overflow: hidden;
     }
 
     .panel-head {
@@ -129,29 +180,36 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 10px;
+      min-width: 0;
+    }
+
+    .panel-head > div:first-child {
+      min-width: 0;
     }
 
     .panel-title {
       font-size: 15px;
       font-weight: 900;
       letter-spacing: -0.02em;
+      color: var(--text);
     }
 
     .panel-subtitle {
       margin-top: 3px;
       font-size: 11px;
       line-height: 1.4;
-      color: rgba(0, 0, 0, 0.48);
+      color: var(--muted);
     }
 
     .mini-pill {
       flex: 0 0 auto;
       border-radius: 999px;
-      background: #fff;
+      border: 1px solid rgba(224, 195, 138, 0.2);
+      background: rgba(224, 195, 138, 0.12);
       padding: 7px 10px;
       font-size: 11px;
       font-weight: 800;
-      color: rgba(0, 0, 0, 0.55);
+      color: var(--gold-soft);
       white-space: nowrap;
     }
 
@@ -166,8 +224,10 @@
       width: 190px;
       height: 190px;
       border-radius: 999px;
-      background: conic-gradient(#4f4b48 0 30%, #8a8680 30% 55%, #b7b1aa 55% 75%, #ddd7cf 75% 100%);
-      box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.14);
+      background: conic-gradient(#263f2b 0 30%, #c89b4f 30% 55%, #6d7d48 55% 75%, #6d4b32 75% 100%);
+      box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, 0.28),
+        0 16px 34px rgba(0, 0, 0, 0.22);
     }
 
     .donut::after {
@@ -175,7 +235,8 @@
       position: absolute;
       inset: 23%;
       border-radius: 999px;
-      background: #f4f1ec;
+      background: var(--surface-2);
+      border: 1px solid rgba(224, 195, 138, 0.14);
     }
 
     .donut-center {
@@ -191,7 +252,7 @@
     .donut-center span {
       font-size: 11px;
       letter-spacing: 0.04em;
-      color: rgba(0, 0, 0, 0.45);
+      color: var(--muted);
     }
 
     .donut-center strong {
@@ -199,6 +260,7 @@
       margin-top: 4px;
       font-size: 22px;
       letter-spacing: -0.04em;
+      color: var(--text);
     }
 
     .allocation-grid {
@@ -209,14 +271,28 @@
     }
 
     .allocation-item {
+      position: relative;
+      min-width: 0;
       border-radius: 16px;
-      background: #fff;
-      padding: 12px;
+      border: 1px solid rgba(224, 195, 138, 0.14);
+      background: rgba(247, 240, 227, 0.94);
+      padding: 12px 12px 12px 16px;
+      overflow: hidden;
+    }
+
+    .allocation-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--color);
     }
 
     .allocation-item span {
       font-size: 12px;
-      color: rgba(0, 0, 0, 0.55);
+      color: rgba(36, 26, 17, 0.56);
     }
 
     .allocation-item strong {
@@ -225,96 +301,92 @@
       font-size: 20px;
       line-height: 1;
       letter-spacing: -0.04em;
+      color: var(--text-dark);
     }
 
-    .table-scroll {
-      width: 100%;
-      margin-top: 16px;
-      overflow-x: auto;
-      border-radius: 18px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: #fff;
-      scrollbar-width: none;
-    }
-
-    .table-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .table {
-      min-width: 610px;
-    }
-
-    .table-row {
+    .mobile-list {
       display: grid;
-      gap: 8px;
-      padding: 13px 14px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      font-size: 13px;
-      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
     }
 
-    .table-row:last-child {
-      border-bottom: 0;
+    .data-card {
+      width: 100%;
+      min-width: 0;
+      border-radius: 18px;
+      border: 1px solid rgba(224, 195, 138, 0.16);
+      background: rgba(247, 240, 227, 0.95);
+      padding: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
     }
 
-    .table-row.header {
-      background: #f7f4ef;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      color: rgba(0, 0, 0, 0.5);
+    .data-card.featured {
+      background: linear-gradient(160deg, #f5ead1 0%, #e2c98f 100%);
+      border: 1px solid rgba(224, 195, 138, 0.62);
+      box-shadow: 0 12px 28px rgba(200, 155, 79, 0.14);
     }
 
-    .stock-table .table-row {
-      grid-template-columns: 1.3fr 0.7fr 0.75fr 0.7fr 1fr;
-    }
-
-    .compare-table .table-row {
-      grid-template-columns: 1.25fr 0.85fr 0.75fr 0.7fr 1.35fr;
-    }
-
-    .stock-name,
-    .group-name {
-      font-weight: 900;
-    }
-
-    .weight {
-      margin-top: 3px;
-      font-size: 11px;
-      color: rgba(0, 0, 0, 0.45);
-    }
-
-    .number {
-      font-weight: 800;
-    }
-
-    .muted {
-      color: rgba(0, 0, 0, 0.6);
-    }
-
-    .compare-panel {
-      margin-top: 14px;
-    }
-
-    .teacher-row {
-      background: #f8f5ef;
-    }
-
-    .compare-head {
+    .data-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 10px;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(36, 26, 17, 0.08);
     }
 
-    .compare-note {
-      max-width: 120px;
+    .data-name {
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--text-dark);
+    }
+
+    .data-sub {
+      margin-top: 3px;
       font-size: 11px;
-      line-height: 1.45;
+      color: rgba(36, 26, 17, 0.46);
+    }
+
+    .data-tag {
+      flex: 0 0 auto;
+      max-width: 126px;
+      border-radius: 999px;
+      background: rgba(38, 63, 43, 0.1);
+      padding: 6px 9px;
+      font-size: 11px;
       font-weight: 800;
-      color: rgba(0, 0, 0, 0.55);
+      line-height: 1.25;
+      color: #263f2b;
       text-align: right;
+    }
+
+    .data-grid {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .metric {
+      border-radius: 14px;
+      background: rgba(36, 26, 17, 0.055);
+      padding: 10px 8px;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      color: rgba(36, 26, 17, 0.46);
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
     }
 
     @media (min-width: 768px) {
@@ -323,18 +395,44 @@
       }
 
       .dashboard {
-        max-width: 760px;
-        padding: 22px;
+        max-width: 520px;
+        padding: 18px;
+        border-radius: 28px;
       }
-
-      .summary-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
 
       .donut {
         width: 220px;
         height: 220px;
+      }
+
+      .panel {
+        padding: 16px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .dashboard {
+        padding: 10px;
+      }
+
+      .tab {
+        font-size: 11px;
+        padding: 8px 4px;
+      }
+
+      .summary-card .value {
+        font-size: 22px;
+      }
+
+      .donut {
+        width: 168px;
+        height: 168px;
+      }
+
+      .mini-pill {
+        padding: 6px 8px;
+        font-size: 10px;
       }
     }
   </style>
@@ -343,36 +441,37 @@
   <main class="page">
     <section class="dashboard">
       <div class="tabs">
-        <div class="tab active">投組總覽</div>
-        <div class="tab">個股拆解</div>
-        <div class="tab">組合比較</div>
-        <div class="upload-pill">Upload Trading History</div>
+        <button class="tab active" type="button" data-target="overview">投組總覽</button>
+        <button class="tab" type="button" data-target="stocks">個股拆解</button>
+        <button class="tab" type="button" data-target="compare">組合比較</button>
       </div>
 
-      <div class="summary-grid">
-        <div class="summary-card">
-          <div class="label">投組風險值 VaR</div>
-          <div class="value">8.2%</div>
-          <div class="sub">中高波動</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">期望報酬</div>
-          <div class="value">14.6%</div>
-          <div class="sub">高於市值 Top10</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">H 值</div>
-          <div class="value">0.68</div>
-          <div class="sub">趨勢延續偏強</div>
-        </div>
-        <div class="summary-card">
-          <div class="label">系統建議</div>
-          <div class="value">降低集中</div>
-          <div class="sub">半導體曝險偏高</div>
-        </div>
-      </div>
+      <div class="upload-pill">Upload Trading History</div>
 
-      <div class="content-grid">
+      <section class="view active" id="overview">
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="label">投組風險值 VaR</div>
+            <div class="value">8.2%</div>
+            <div class="sub">中高波動</div>
+          </div>
+          <div class="summary-card">
+            <div class="label">期望報酬</div>
+            <div class="value">14.6%</div>
+            <div class="sub">高於市值 Top10</div>
+          </div>
+          <div class="summary-card">
+            <div class="label">H 值</div>
+            <div class="value">0.68</div>
+            <div class="sub">趨勢延續偏強</div>
+          </div>
+          <div class="summary-card">
+            <div class="label">系統建議</div>
+            <div class="value">降低集中</div>
+            <div class="sub">半導體曝險偏高</div>
+          </div>
+        </div>
+
         <div class="panel">
           <div class="panel-head">
             <div>
@@ -394,13 +493,15 @@
           </div>
 
           <div class="allocation-grid">
-            <div class="allocation-item"><span>半導體</span><strong>30%</strong></div>
-            <div class="allocation-item"><span>AI 伺服器</span><strong>25%</strong></div>
-            <div class="allocation-item"><span>ETF</span><strong>20%</strong></div>
-            <div class="allocation-item"><span>現金</span><strong>25%</strong></div>
+            <div class="allocation-item" style="--color:#0B3545"><span>半導體</span><strong>30%</strong></div>
+            <div class="allocation-item" style="--color:#D67D09"><span>AI 伺服器</span><strong>25%</strong></div>
+            <div class="allocation-item" style="--color:#3D5718"><span>ETF</span><strong>20%</strong></div>
+            <div class="allocation-item" style="--color:#600E1A"><span>現金</span><strong>25%</strong></div>
           </div>
         </div>
+      </section>
 
+      <section class="view" id="stocks">
         <div class="panel">
           <div class="panel-head">
             <div>
@@ -410,59 +511,124 @@
             <div class="mini-pill">逐檔可展開</div>
           </div>
 
-          <div class="table-scroll">
-            <div class="table stock-table">
-              <div class="table-row header">
-                <div>股票</div><div>VaR</div><div>報酬</div><div>H 值</div><div>判讀</div>
+          <div class="mobile-list">
+            <div class="data-card">
+              <div class="data-top">
+                <div><div class="data-name">聯電</div><div class="data-sub">持股比重 18%</div></div>
+                <div class="data-tag">趨勢延續強</div>
               </div>
-              <div class="table-row">
-                <div><div class="stock-name">聯電</div><div class="weight">持股比重 18%</div></div>
-                <div class="number">6.1%</div><div class="number">13.2%</div><div class="number">0.72</div><div class="muted">趨勢延續強</div>
-              </div>
-              <div class="table-row">
-                <div><div class="stock-name">智邦</div><div class="weight">持股比重 14%</div></div>
-                <div class="number">8.4%</div><div class="number">17.8%</div><div class="number">0.77</div><div class="muted">高成長可續抱</div>
-              </div>
-              <div class="table-row">
-                <div><div class="stock-name">台積電</div><div class="weight">持股比重 26%</div></div>
-                <div class="number">5.8%</div><div class="number">11.1%</div><div class="number">0.63</div><div class="muted">核心持股</div>
-              </div>
-              <div class="table-row">
-                <div><div class="stock-name">廣達</div><div class="weight">持股比重 12%</div></div>
-                <div class="number">9.1%</div><div class="number">15.4%</div><div class="number">0.58</div><div class="muted">波動偏高</div>
+              <div class="data-grid">
+                <div class="metric"><span>VaR</span><strong>6.1%</strong></div>
+                <div class="metric"><span>報酬</span><strong>13.2%</strong></div>
+                <div class="metric"><span>H 值</span><strong>0.72</strong></div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="panel compare-panel">
-        <div class="compare-head">
-          <div>
-            <div class="panel-title">組合比較</div>
-            <div class="panel-subtitle">我的投組 vs 市值 Top10 vs 老師選股 Top10</div>
-          </div>
-          <div class="compare-note">快速看出誰的報酬效率更高</div>
-        </div>
+            <div class="data-card">
+              <div class="data-top">
+                <div><div class="data-name">智邦</div><div class="data-sub">持股比重 14%</div></div>
+                <div class="data-tag">高成長可續抱</div>
+              </div>
+              <div class="data-grid">
+                <div class="metric"><span>VaR</span><strong>8.4%</strong></div>
+                <div class="metric"><span>報酬</span><strong>17.8%</strong></div>
+                <div class="metric"><span>H 值</span><strong>0.77</strong></div>
+              </div>
+            </div>
 
-        <div class="table-scroll">
-          <div class="table compare-table">
-            <div class="table-row header">
-              <div>組合</div><div>預期報酬</div><div>VaR</div><div>H 值</div><div>結論</div>
+            <div class="data-card">
+              <div class="data-top">
+                <div><div class="data-name">台積電</div><div class="data-sub">持股比重 26%</div></div>
+                <div class="data-tag">核心持股</div>
+              </div>
+              <div class="data-grid">
+                <div class="metric"><span>VaR</span><strong>5.8%</strong></div>
+                <div class="metric"><span>報酬</span><strong>11.1%</strong></div>
+                <div class="metric"><span>H 值</span><strong>0.63</strong></div>
+              </div>
             </div>
-            <div class="table-row">
-              <div class="group-name">我的投組</div><div class="number">11.2%</div><div class="number">9.8%</div><div class="number">0.54</div><div class="muted">報酬普通、波動偏高</div>
-            </div>
-            <div class="table-row">
-              <div class="group-name">市值 Top10</div><div class="number">9.6%</div><div class="number">7.1%</div><div class="number">0.61</div><div class="muted">整體較穩健</div>
-            </div>
-            <div class="table-row teacher-row">
-              <div class="group-name">老師選股 Top10</div><div class="number">15.3%</div><div class="number">8.0%</div><div class="number">0.73</div><div class="muted">報酬效率最佳</div>
+
+            <div class="data-card">
+              <div class="data-top">
+                <div><div class="data-name">廣達</div><div class="data-sub">持股比重 12%</div></div>
+                <div class="data-tag">波動偏高</div>
+              </div>
+              <div class="data-grid">
+                <div class="metric"><span>VaR</span><strong>9.1%</strong></div>
+                <div class="metric"><span>報酬</span><strong>15.4%</strong></div>
+                <div class="metric"><span>H 值</span><strong>0.58</strong></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section class="view" id="compare">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">組合比較</div>
+              <div class="panel-subtitle">我的投組 vs 市值 Top10 vs 老師選股 Top10</div>
+            </div>
+          </div>
+
+          <div class="mobile-list">
+            <div class="data-card">
+              <div class="data-top">
+                <div><div class="data-name">我的投組</div><div class="data-sub">目前配置</div></div>
+                <div class="data-tag">報酬普通、波動偏高</div>
+              </div>
+              <div class="data-grid">
+                <div class="metric"><span>預期報酬</span><strong>11.2%</strong></div>
+                <div class="metric"><span>VaR</span><strong>9.8%</strong></div>
+                <div class="metric"><span>H 值</span><strong>0.54</strong></div>
+              </div>
+            </div>
+
+            <div class="data-card">
+              <div class="data-top">
+                <div><div class="data-name">市值 Top10</div><div class="data-sub">大型權值股組合</div></div>
+                <div class="data-tag">整體較穩健</div>
+              </div>
+              <div class="data-grid">
+                <div class="metric"><span>預期報酬</span><strong>9.6%</strong></div>
+                <div class="metric"><span>VaR</span><strong>7.1%</strong></div>
+                <div class="metric"><span>H 值</span><strong>0.61</strong></div>
+              </div>
+            </div>
+
+            <div class="data-card featured">
+              <div class="data-top">
+                <div><div class="data-name">老師選股 Top10</div><div class="data-sub">課程示範組合</div></div>
+                <div class="data-tag">報酬效率最佳</div>
+              </div>
+              <div class="data-grid">
+                <div class="metric"><span>預期報酬</span><strong>15.3%</strong></div>
+                <div class="metric"><span>VaR</span><strong>8.0%</strong></div>
+                <div class="metric"><span>H 值</span><strong>0.73</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const views = document.querySelectorAll('.view');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+
+        tabs.forEach((item) => item.classList.remove('active'));
+        views.forEach((view) => view.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
