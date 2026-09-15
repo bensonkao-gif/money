@@ -1,740 +1,393 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>風險配置工具｜手機版</title>
-  <style>
-    :root {
-      --bg: #17120d;
-      --surface: #251c14;
-      --surface-2: #30251a;
-      --card: #efe7d8;
-      --card-soft: #e5dac7;
-      --cream: #f7f0e3;
-      --text: #f6efe2;
-      --text-dark: #241a11;
-      --muted: rgba(246, 239, 226, 0.58);
-      --muted-dark: rgba(36, 26, 17, 0.56);
-      --line: rgba(214, 172, 95, 0.22);
-      --gold: #c89b4f;
-      --gold-soft: #e0c38a;
-      --green: #263f2b;
-      --green-soft: #6d7d48;
-      --brown: #6d4b32;
-      --wine: #5c1f22;
-      --shadow: rgba(0, 0, 0, 0.35);
-      --font-ui: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      --font-display: "Noto Serif TC", "Songti TC", "STSong", "PMingLiU", serif;
-      --font-en: Georgia, "Times New Roman", serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMoney 內容事業群 2027</title>
+<style>
+:root{
+  --bg:#f2eee7;
+  --card:rgba(255,255,255,.56);
+  --ink:#111111;
+  --muted:#77736d;
+  --line:rgba(17,17,17,.10);
+  --accent:#dfff2f;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:Inter,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  background:
+    radial-gradient(circle at 18% 6%, rgba(255,255,255,.55), transparent 24%),
+    var(--bg);
+}
+.wrap{max-width:1260px;margin:auto;padding:56px 34px 88px}
+.kicker{font-size:11px;letter-spacing:.16em;font-weight:800;margin-bottom:28px}
+h1{
+  font-family:"DM Serif Display",Georgia,serif;
+  font-size:56px;line-height:1.03;letter-spacing:-.035em;font-weight:500;
+  margin:0 0 16px;
+}
+.hero-sub{
+  font-size:16px;line-height:1.65;color:var(--muted);
+  max-width:720px;margin-bottom:72px;
+}
+section{margin-top:84px}
+.section-head{margin-bottom:28px}
+.section-no{font-size:11px;letter-spacing:.16em;font-weight:800;margin-bottom:12px}
+h2{
+  font-family:"DM Serif Display",Georgia,serif;
+  font-size:36px;line-height:1.15;font-weight:500;letter-spacing:-.02em;margin:0
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 36px rgba(20,18,15,.04);
+}
 
-    * {
-      box-sizing: border-box;
-    }
+/* products */
+.root{
+  width:300px;margin:0 auto 42px;padding:20px;
+  background:#111;color:#f6f1e9;border-radius:16px;
+  text-align:center;font-size:22px;font-weight:800
+}
+.product-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:18px
+}
+.product-col{padding:20px;min-height:228px}
+.product-col h3{font-size:16px;margin:0 0 14px}
+.item{
+  padding:10px 12px;margin:8px 0;
+  background:rgba(255,255,255,.52);
+  border:1px solid rgba(17,17,17,.06);
+  border-radius:10px;font-size:12px
+}
+.future{color:#a7a199;background:rgba(255,255,255,.2);border-style:dashed}
 
-    html,
-    body {
-      width: 100%;
-      min-height: 100%;
-      margin: 0;
-      overflow-x: hidden;
-      background: #17120d;
-    }
+/* flywheel */
+.flywheel{padding:28px}
+.fly-top,.longterm,.flowbox,.forum{
+  text-align:center
+}
+.fly-top{
+  width:320px;margin:auto;padding:16px;
+  border:1px solid #111;border-radius:16px;
+  background:rgba(255,255,255,.48)
+}
+.fly-top h3,.flowbox h3,.longterm h3{margin:0 0 6px;font-size:17px}
+.fly-top p,.flowbox p,.longterm p{
+  margin:0;color:var(--muted);font-size:12px;line-height:1.55
+}
+.arrow{font-size:22px;text-align:center;color:#918b83;margin:12px 0}
+.pool{
+  width:240px;margin:auto;padding:12px;border-radius:13px;
+  background:#111;color:white;text-align:center;font-weight:800
+}
+.dual{
+  display:grid;grid-template-columns:1fr 1fr;
+  max-width:760px;margin:18px auto;gap:14px
+}
+.flowbox{padding:18px}
+.bridge{
+  max-width:720px;margin:12px auto;padding:12px 16px;
+  background:var(--accent);border-radius:12px;
+  text-align:center;font-weight:800;font-size:12px
+}
+.longterm{
+  max-width:720px;margin:24px auto;padding:18px
+}
+.outputs{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;max-width:900px;margin:18px auto
+}
+.member{
+  max-width:520px;margin:18px auto;padding:13px 16px;
+  border:1px solid var(--line);border-radius:12px;
+  text-align:center;font-weight:800;background:rgba(255,255,255,.45)
+}
+.forum{
+  max-width:780px;margin:24px auto 0;padding:18px;
+  border:1px solid #111;border-radius:16px;background:rgba(255,255,255,.42)
+}
+.forum h3{margin:0 0 14px;font-size:18px}
+.forum-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.forum-item{
+  padding:11px 9px;border-radius:10px;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(17,17,17,.06);font-size:13px
+}
 
-    body {
-      min-height: 100svh;
-      font-family: var(--font-ui);
-      background:
-        radial-gradient(circle at top left, rgba(200, 155, 79, 0.18), transparent 32%),
-        linear-gradient(145deg, #17120d 0%, #241a12 46%, #11160f 100%);
-      background-color: #17120d;
-      color: var(--text);
-    }
+/* revenue */
+.revenue-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:14px
+}
+.target{
+  background:#111;color:#f7f2ea;border-radius:16px;padding:34px
+}
+.target .big{
+  font-family:"DM Serif Display",Georgia,serif;
+  font-size:62px;line-height:1;margin:6px 0 20px
+}
+.rows{display:grid;gap:16px}
+.row{
+  display:grid;grid-template-columns:180px 1fr 82px;
+  align-items:center;gap:10px;font-size:13px
+}
+.bar{height:9px;border-radius:999px;background:#333;overflow:hidden}
+.fill{height:100%;background:var(--accent);border-radius:999px}
+.rev-list{padding:20px}
+.rev-line{padding:12px 0;border-bottom:1px solid var(--line)}
+.rev-line:last-child{border-bottom:0}
+.rev-line b{display:block;font-size:14px;margin-bottom:3px}
+.rev-line span{color:var(--muted);font-size:13px}
 
-    .page {
-      width: 100%;
-      min-height: 100svh;
-      padding: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background:
-        radial-gradient(circle at top left, rgba(200, 155, 79, 0.18), transparent 32%),
-        linear-gradient(145deg, #17120d 0%, #241a12 46%, #11160f 100%);
-      background-color: #17120d;
-    }
+/* people */
+.people-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:14px
+}
+.people-main{padding:20px}
+.kpis{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;margin-bottom:18px
+}
+.kpi{
+  padding:14px;background:rgba(255,255,255,.44);
+  border-radius:12px
+}
+.kpi b{
+  display:block;font-family:"DM Serif Display",Georgia,serif;
+  font-size:32px;font-weight:500;margin-bottom:2px
+}
+.kpi span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse}
+th,td{
+  text-align:left;padding:10px 8px;
+  border-bottom:1px solid var(--line);font-size:13px
+}
+th{font-size:10px;color:var(--muted);letter-spacing:.06em}
+td:last-child,th:last-child{text-align:right}
+.people-side{padding:20px}
+.cap{padding:18px 0;border-bottom:1px solid var(--line)}
+.cap:last-child{border-bottom:0}
+.cap b{display:block;font-size:15px;margin-bottom:6px}
+.cap span{font-size:13px;line-height:1.7;color:var(--muted)}
+.shared{
+  margin-top:22px;padding:12px 14px;
+  background:rgba(223,255,47,.28);
+  border-radius:11px;font-size:12px
+}
 
-    .dashboard {
-      width: 100%;
-      max-width: 430px;
-      min-height: 100svh;
-      margin: 0 auto;
-      border-radius: 0;
-      border: 0;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
-        var(--surface);
-      padding: max(14px, env(safe-area-inset-top)) 12px max(18px, env(safe-area-inset-bottom));
-      box-shadow: none;
-      overflow-x: hidden;
-      overflow-y: visible;
-    }
-
-    .brand-header {
-      position: relative;
-      padding: 16px 2px 22px;
-      text-align: center;
-    }
-
-    .brand-header::after {
-      content: "";
-      display: block;
-      width: 64px;
-      height: 1px;
-      margin: 16px auto 0;
-      background: linear-gradient(90deg, transparent, rgba(224, 195, 138, 0.75), transparent);
-    }
-
-    .brand-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 10px;
-      color: rgba(224, 195, 138, 0.68);
-      font-family: var(--font-en);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-    }
-
-    .brand-kicker::before,
-    .brand-kicker::after {
-      content: "";
-      width: 22px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(224, 195, 138, 0.75));
-    }
-
-    .brand-kicker::after {
-      background: linear-gradient(90deg, rgba(224, 195, 138, 0.75), transparent);
-    }
-
-    .brand-title {
-      margin: 0;
-      font-family: var(--font-display);
-      font-size: 32px;
-      line-height: 1.18;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      color: var(--text);
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.42);
-    }
-
-    .brand-title span {
-      display: inline-block;
-      padding-left: 0.14em;
-      background: linear-gradient(135deg, #fff9eb 0%, #e7cf95 46%, #a97835 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .brand-subtitle {
-      margin-top: 10px;
-      color: rgba(246, 239, 226, 0.48);
-      font-family: var(--font-en);
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-    }
-
-    .tabs {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .tab {
-      width: 100%;
-      border: 1px solid rgba(224, 195, 138, 0.24);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
-      padding: 9px 6px;
-      color: rgba(246, 239, 226, 0.72);
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1;
-      white-space: nowrap;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .tab.active {
-      border-color: rgba(224, 195, 138, 0.88);
-      background: linear-gradient(135deg, #e0c38a 0%, #b98539 100%);
-      color: #24180d;
-      box-shadow: 0 8px 20px rgba(200, 155, 79, 0.22);
-    }
-
-    .upload-pill {
-      margin-top: 10px;
-      width: 100%;
-      border-radius: 999px;
-      border: 1px solid rgba(224, 195, 138, 0.18);
-      background: rgba(255, 255, 255, 0.055);
-      padding: 10px 14px;
-      color: rgba(246, 239, 226, 0.62);
-      font-family: var(--font-en);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-align: center;
-    }
-
-    .view {
-      display: none;
-    }
-
-    .view.active {
-      display: block;
-    }
-
-    .summary-grid {
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .summary-card {
-      min-height: 118px;
-      border-radius: 18px;
-      border: 1px solid rgba(224, 195, 138, 0.18);
-      background: linear-gradient(160deg, rgba(247, 240, 227, 0.98), rgba(229, 218, 199, 0.94));
-      padding: 15px;
-      min-width: 0;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    }
-
-    .summary-card .label {
-      font-size: 11px;
-      line-height: 1.35;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: rgba(36, 26, 17, 0.48);
-    }
-
-    .summary-card .value {
-      margin-top: 12px;
-      font-size: 26px;
-      line-height: 1.05;
-      font-weight: 850;
-      letter-spacing: -0.04em;
-      word-break: keep-all;
-      color: var(--text-dark);
-    }
-
-    .summary-card .sub {
-      margin-top: 6px;
-      font-size: 12px;
-      line-height: 1.45;
-      color: var(--muted-dark);
-    }
-
-    .panel {
-      width: 100%;
-      min-width: 0;
-      margin-top: 14px;
-      border-radius: 22px;
-      border: 1px solid rgba(224, 195, 138, 0.18);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
-        var(--surface-2);
-      padding: 14px;
-      overflow: hidden;
-    }
-
-    .panel-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-      min-width: 0;
-    }
-
-    .panel-head > div:first-child {
-      min-width: 0;
-    }
-
-    .panel-title {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-
-    .panel-subtitle {
-      margin-top: 3px;
-      font-family: var(--font-en);
-      font-size: 10px;
-      line-height: 1.45;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-
-    .mini-pill {
-      flex: 0 0 auto;
-      border-radius: 999px;
-      border: 1px solid rgba(224, 195, 138, 0.2);
-      background: rgba(224, 195, 138, 0.12);
-      padding: 7px 10px;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--gold-soft);
-      white-space: nowrap;
-    }
-
-    .donut-wrap {
-      margin-top: 24px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .donut {
-      position: relative;
-      width: 190px;
-      height: 190px;
-      border-radius: 999px;
-      background: conic-gradient(#263f2b 0 30%, #c89b4f 30% 55%, #6d7d48 55% 75%, #6d4b32 75% 100%);
-      box-shadow:
-        inset 0 0 18px rgba(0, 0, 0, 0.28),
-        0 16px 34px rgba(0, 0, 0, 0.22);
-    }
-
-    .donut::after {
-      content: "";
-      position: absolute;
-      inset: 23%;
-      border-radius: 999px;
-      background: var(--surface-2);
-      border: 1px solid rgba(224, 195, 138, 0.14);
-    }
-
-    .donut-center {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .donut-center span {
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-    }
-
-    .donut-center strong {
-      display: block;
-      margin-top: 4px;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text);
-    }
-
-    .allocation-grid {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .allocation-item {
-      position: relative;
-      min-width: 0;
-      border-radius: 16px;
-      border: 1px solid rgba(224, 195, 138, 0.14);
-      background: rgba(247, 240, 227, 0.94);
-      padding: 12px 12px 12px 16px;
-      overflow: hidden;
-    }
-
-    .allocation-item::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 5px;
-      background: var(--color);
-    }
-
-    .allocation-item span {
-      font-size: 12px;
-      color: rgba(36, 26, 17, 0.56);
-    }
-
-    .allocation-item strong {
-      display: block;
-      margin-top: 4px;
-      font-size: 20px;
-      font-weight: 850;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: var(--text-dark);
-    }
-
-    .mobile-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .data-card {
-      width: 100%;
-      min-width: 0;
-      border-radius: 18px;
-      border: 1px solid rgba(224, 195, 138, 0.16);
-      background: rgba(247, 240, 227, 0.95);
-      padding: 14px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    }
-
-    .data-card.featured {
-      background: linear-gradient(160deg, #f5ead1 0%, #e2c98f 100%);
-      border: 1px solid rgba(224, 195, 138, 0.62);
-      box-shadow: 0 12px 28px rgba(200, 155, 79, 0.14);
-    }
-
-    .data-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(36, 26, 17, 0.08);
-    }
-
-    .data-name {
-      font-size: 15px;
-      font-weight: 850;
-      color: var(--text-dark);
-    }
-
-    .data-sub {
-      margin-top: 3px;
-      font-size: 11px;
-      color: rgba(36, 26, 17, 0.46);
-    }
-
-    .data-tag {
-      flex: 0 0 auto;
-      max-width: 126px;
-      border-radius: 999px;
-      background: rgba(38, 63, 43, 0.1);
-      padding: 6px 9px;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.25;
-      color: #263f2b;
-      text-align: right;
-    }
-
-    .data-grid {
-      margin-top: 12px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-    }
-
-    .metric {
-      border-radius: 14px;
-      background: rgba(36, 26, 17, 0.055);
-      padding: 10px 8px;
-    }
-
-    .metric span {
-      display: block;
-      font-size: 10px;
-      font-weight: 700;
-      color: rgba(36, 26, 17, 0.46);
-    }
-
-    .metric strong {
-      display: block;
-      margin-top: 5px;
-      font-size: 15px;
-      font-weight: 850;
-      letter-spacing: -0.03em;
-      color: var(--text-dark);
-    }
-
-    @media (min-width: 768px) {
-      .page {
-        padding: 40px;
-        overflow-y: visible;
-      }
-
-      .dashboard {
-        max-width: 520px;
-        min-height: auto;
-        padding: 18px;
-        border-radius: 28px;
-        border: 1px solid var(--line);
-        box-shadow: 0 24px 60px var(--shadow);
-      }
-
-      .donut {
-        width: 220px;
-        height: 220px;
-      }
-
-      .panel {
-        padding: 16px;
-        border-radius: 24px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .brand-title {
-        font-size: 28px;
-        letter-spacing: 0.1em;
-      }
-
-      .brand-subtitle {
-        font-size: 10px;
-      }
-
-      .dashboard {
-        padding: 10px;
-      }
-
-      .tab {
-        font-size: 11px;
-        padding: 8px 4px;
-      }
-
-      .summary-card .value {
-        font-size: 22px;
-      }
-
-      .donut {
-        width: 168px;
-        height: 168px;
-      }
-
-      .mini-pill {
-        padding: 6px 8px;
-        font-size: 10px;
-      }
-    }
-  </style>
+@media(max-width:1000px){
+  .product-grid{grid-template-columns:1fr 1fr}
+  .revenue-grid,.people-grid{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .wrap{padding:52px 22px 90px}
+  h1{font-size:48px}
+  h2{font-size:34px}
+  section{margin-top:72px}
+  .product-grid,.dual,.outputs,.forum-grid,.kpis{grid-template-columns:1fr}
+  .row{grid-template-columns:120px 1fr 70px}
+}
+</style>
 </head>
 <body>
-  <main class="page">
-    <section class="dashboard">
-      <header class="brand-header">
-        <div class="brand-kicker">PROFIT ACCELERATOR</div>
-        <h1 class="brand-title"><span>加速獲利小工具</span></h1>
-        <div class="brand-subtitle">Risk Control · Allocation · Stock Review</div>
-      </header>
+<div class="wrap">
 
-      <div class="tabs">
-        <button class="tab active" type="button" data-target="overview">投組總覽</button>
-        <button class="tab" type="button" data-target="stocks">個股拆解</button>
-        <button class="tab" type="button" data-target="compare">組合比較</button>
+  <div class="kicker">CMONEY CONTENT BUSINESS 2027</div>
+  <h1>把一個好老師，<br>變成一個長久的生意。</h1>
+  <div class="hero-sub">媒體找人、課程變現、出版放大、內容長期經營，再延伸高價課、訂閱與新產品。</div>
+
+  <section>
+    <div class="section-head">
+      <div class="section-no">01</div>
+      <h2>我們會做哪些產品</h2>
+    </div>
+
+    <div class="root">內容事業群</div>
+
+    <div class="product-grid">
+      <div class="product-col card">
+        <h3>媒體</h3>
+        <div class="item">MONEY 錢雜誌</div>
+        <div class="item">Podcast</div>
+        <div class="item">YouTube</div>
+        <div class="item">短影音 / 社群</div>
+        <div class="item">電子報</div>
       </div>
 
-      <div class="upload-pill">Upload Trading History</div>
+      <div class="product-col card">
+        <h3>知識產品</h3>
+        <div class="item">線上課程 + App</div>
+        <div class="item">圖書出版</div>
+        <div class="item">電子書</div>
+      </div>
 
-      <section class="view active" id="overview">
-        <div class="summary-grid">
-          <div class="summary-card">
-            <div class="label">投組風險值 VaR</div>
-            <div class="value">8.2%</div>
-            <div class="sub">中高波動</div>
-          </div>
-          <div class="summary-card">
-            <div class="label">期望報酬</div>
-            <div class="value">14.6%</div>
-            <div class="sub">高於市值 Top10</div>
-          </div>
-          <div class="summary-card">
-            <div class="label">H 值</div>
-            <div class="value">0.68</div>
-            <div class="sub">趨勢延續偏強</div>
-          </div>
-          <div class="summary-card">
-            <div class="label">系統建議</div>
-            <div class="value">降低集中</div>
-            <div class="sub">半導體曝險偏高</div>
-          </div>
+      <div class="product-col card">
+        <h3>實體活動</h3>
+        <div class="item">實體講座</div>
+        <div class="item">論壇 / 峰會</div>
+        <div class="item">簽書會</div>
+        <div class="item">工作坊</div>
+      </div>
+
+      <div class="product-col card">
+        <h3>高價產品</h3>
+        <div class="item">高價課程</div>
+        <div class="item future">培訓 / 認證</div>
+        <div class="item future">顧問</div>
+        <div class="item future">1 對 1 服務</div>
+      </div>
+
+      <div class="product-col card">
+        <h3>新收入</h3>
+        <div class="item">訂閱制</div>
+        <div class="item">新商模</div>
+        <div class="item">影響力論壇</div>
+        <div class="item future">會員制</div>
+        <div class="item future">AI 個人化服務</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-no">02</div>
+      <h2>每個產品，替下一個產品鋪路</h2>
+    </div>
+
+    <div class="flywheel card">
+      <div class="fly-top">
+        <h3>MONEY 錢雜誌</h3>
+        <p>找老師・測題目・創造需求</p>
+      </div>
+
+      <div class="arrow">↓</div>
+      <div class="pool">找到值得長期合作的人</div>
+
+      <div class="dual">
+        <div class="flowbox card">
+          <h3>線上課程 + App</h3>
+          <p>賣內容・測市場</p>
+        </div>
+        <div class="flowbox card">
+          <h3>圖書出版</h3>
+          <p>做作者・再曝光</p>
+        </div>
+      </div>
+
+      <div class="bridge">課程 → 書，再行銷　｜　書 → 課程，再變現</div>
+
+      <div class="arrow">↓</div>
+
+      <div class="longterm card">
+        <h3>YouTube / Podcast / 短影音</h3>
+        <p>長期累積粉絲與信任</p>
+      </div>
+
+      <div class="outputs">
+        <div class="flowbox card"><h3>高價課</h3><p>提高收入</p></div>
+        <div class="flowbox card"><h3>再開新課</h3><p>延伸新題目</p></div>
+        <div class="flowbox card"><h3>訂閱 / 新商模</h3><p>持續收入</p></div>
+      </div>
+
+      <div class="arrow">↓</div>
+      <div class="member">把買過的人留下來，下一次再回來買</div>
+
+      <div class="forum">
+        <h3>一年一次影響力論壇</h3>
+        <div class="forum-grid">
+          <div class="forum-item">建立品牌高度</div>
+          <div class="forum-item">讓老師更信任我們</div>
+          <div class="forum-item">邀請不好接觸的大咖</div>
+          <div class="forum-item">維持老師關係</div>
+          <div class="forum-item">測試明年題目</div>
+          <div class="forum-item">營收約 500–600 萬</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-no">03</div>
+      <h2>2027，先做到 4 億</h2>
+    </div>
+
+    <div class="revenue-grid">
+      <div class="target">
+        <div style="font-size:11px;letter-spacing:.14em;color:#aaa39b">2027 TARGET</div>
+        <div class="big">4 億</div>
+
+        <div class="rows">
+          <div class="row"><span>線上課程 + App</span><div class="bar"><div class="fill" style="width:60%"></div></div><b>2.4 億</b></div>
+          <div class="row"><span>高價課程</span><div class="bar"><div class="fill" style="width:20%"></div></div><b>0.8 億</b></div>
+          <div class="row"><span>圖書出版</span><div class="bar"><div class="fill" style="width:11%"></div></div><b>0.45 億</b></div>
+          <div class="row"><span>訂閱制</span><div class="bar"><div class="fill" style="width:5%"></div></div><b>0.2 億</b></div>
+          <div class="row"><span>新商模</span><div class="bar"><div class="fill" style="width:2.5%"></div></div><b>0.1 億</b></div>
+          <div class="row"><span>廣告 / 品牌合作</span><div class="bar"><div class="fill" style="width:1.5%"></div></div><b>0.05 億</b></div>
+        </div>
+      </div>
+
+      <div class="rev-list card">
+        <div class="rev-line"><b>線上課程 + App</b><span>12 堂 × 2,000 萬</span></div>
+        <div class="rev-line"><b>高價課程</b><span>4 堂 × 2,000 萬</span></div>
+        <div class="rev-line"><b>圖書出版</b><span>15 本 / 年</span></div>
+        <div class="rev-line"><b>訂閱制</b><span>先做可落地的 recurring 收入</span></div>
+        <div class="rev-line"><b>新商模</b><span>含影響力論壇與新產品測試</span></div>
+        <div class="rev-line"><b>廣告 / 品牌合作</b><span>MONEY、Podcast、YouTube</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-no">04</div>
+      <h2>30 人怎麼分</h2>
+    </div>
+
+    <div class="people-grid">
+      <div class="people-main card">
+        <div class="kpis">
+          <div class="kpi"><b>30</b><span>核心人數</span></div>
+          <div class="kpi"><b>12</b><span>線上課 / 年</span></div>
+          <div class="kpi"><b>15</b><span>出版 / 年</span></div>
         </div>
 
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <div class="panel-title">投組配置比例</div>
-              <div class="panel-subtitle">Portfolio Allocation</div>
-            </div>
-            <div class="mini-pill">更新於今日</div>
-          </div>
+        <table>
+          <thead><tr><th>工作</th><th>人數</th></tr></thead>
+          <tbody>
+            <tr><td>事業群負責人</td><td>1</td></tr>
+            <tr><td>內容研究 / PM</td><td>4</td></tr>
+            <tr><td>行銷</td><td>4</td></tr>
+            <tr><td>設計</td><td>3</td></tr>
+            <tr><td>影音</td><td>4</td></tr>
+            <tr><td>書籍編輯</td><td>4</td></tr>
+            <tr><td>節目 / IP 經營</td><td>2</td></tr>
+            <tr><td>新產品 PM</td><td>2</td></tr>
+            <tr><td>論壇 / 活動</td><td>1</td></tr>
+            <tr><td>客服 / 營運</td><td>3</td></tr>
+            <tr><td>製課 / 上架支援</td><td>2</td></tr>
+            <tr><td><b>總計</b></td><td><b>30</b></td></tr>
+          </tbody>
+        </table>
 
-          <div class="donut-wrap">
-            <div class="donut">
-              <div class="donut-center">
-                <div>
-                  <span>目前投組</span>
-                  <strong>12 檔持股</strong>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="shared">工程、Data、AI Lab、財務、法務、HR 使用公司共用資源。</div>
+      </div>
 
-          <div class="allocation-grid">
-            <div class="allocation-item" style="--color:#0B3545"><span>半導體</span><strong>30%</strong></div>
-            <div class="allocation-item" style="--color:#D67D09"><span>AI 伺服器</span><strong>25%</strong></div>
-            <div class="allocation-item" style="--color:#3D5718"><span>ETF</span><strong>20%</strong></div>
-            <div class="allocation-item" style="--color:#600E1A"><span>現金</span><strong>25%</strong></div>
-          </div>
-        </div>
-      </section>
+      <div class="people-side card">
+        <div class="cap"><b>12 堂線上課</b><span>內容、行銷、設計、影音共用。</span></div>
+        <div class="cap"><b>15 本出版</b><span>4 位編輯，設計與行銷共用。</span></div>
+        <div class="cap"><b>4 堂高價課</b><span>沿用內容、行銷、設計與客服。</span></div>
+        <div class="cap"><b>媒體</b><span>MONEY、Podcast、YouTube 同時負責找老師與養老師。</span></div>
+        <div class="cap"><b>新產品</b><span>2 位 PM 專心做 App、訂閱、新商模。</span></div>
+      </div>
+    </div>
+  </section>
 
-      <section class="view" id="stocks">
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <div class="panel-title">個股分析明細</div>
-              <div class="panel-subtitle">Click each stock to inspect VaR / Return / H</div>
-            </div>
-            <div class="mini-pill">逐檔可展開</div>
-          </div>
-
-          <div class="mobile-list">
-            <div class="data-card">
-              <div class="data-top">
-                <div><div class="data-name">聯電</div><div class="data-sub">持股比重 18%</div></div>
-                <div class="data-tag">趨勢延續強</div>
-              </div>
-              <div class="data-grid">
-                <div class="metric"><span>VaR</span><strong>6.1%</strong></div>
-                <div class="metric"><span>報酬</span><strong>13.2%</strong></div>
-                <div class="metric"><span>H 值</span><strong>0.72</strong></div>
-              </div>
-            </div>
-
-            <div class="data-card">
-              <div class="data-top">
-                <div><div class="data-name">智邦</div><div class="data-sub">持股比重 14%</div></div>
-                <div class="data-tag">高成長可續抱</div>
-              </div>
-              <div class="data-grid">
-                <div class="metric"><span>VaR</span><strong>8.4%</strong></div>
-                <div class="metric"><span>報酬</span><strong>17.8%</strong></div>
-                <div class="metric"><span>H 值</span><strong>0.77</strong></div>
-              </div>
-            </div>
-
-            <div class="data-card">
-              <div class="data-top">
-                <div><div class="data-name">台積電</div><div class="data-sub">持股比重 26%</div></div>
-                <div class="data-tag">核心持股</div>
-              </div>
-              <div class="data-grid">
-                <div class="metric"><span>VaR</span><strong>5.8%</strong></div>
-                <div class="metric"><span>報酬</span><strong>11.1%</strong></div>
-                <div class="metric"><span>H 值</span><strong>0.63</strong></div>
-              </div>
-            </div>
-
-            <div class="data-card">
-              <div class="data-top">
-                <div><div class="data-name">廣達</div><div class="data-sub">持股比重 12%</div></div>
-                <div class="data-tag">波動偏高</div>
-              </div>
-              <div class="data-grid">
-                <div class="metric"><span>VaR</span><strong>9.1%</strong></div>
-                <div class="metric"><span>報酬</span><strong>15.4%</strong></div>
-                <div class="metric"><span>H 值</span><strong>0.58</strong></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="view" id="compare">
-        <div class="panel">
-          <div class="panel-head">
-            <div>
-              <div class="panel-title">組合比較</div>
-              <div class="panel-subtitle">我的投組 vs 市值 Top10 vs 老師選股 Top10</div>
-            </div>
-          </div>
-
-          <div class="mobile-list">
-            <div class="data-card">
-              <div class="data-top">
-                <div><div class="data-name">我的投組</div><div class="data-sub">目前配置</div></div>
-                <div class="data-tag">報酬普通、波動偏高</div>
-              </div>
-              <div class="data-grid">
-                <div class="metric"><span>預期報酬</span><strong>11.2%</strong></div>
-                <div class="metric"><span>VaR</span><strong>9.8%</strong></div>
-                <div class="metric"><span>H 值</span><strong>0.54</strong></div>
-              </div>
-            </div>
-
-            <div class="data-card">
-              <div class="data-top">
-                <div><div class="data-name">市值 Top10</div><div class="data-sub">大型權值股組合</div></div>
-                <div class="data-tag">整體較穩健</div>
-              </div>
-              <div class="data-grid">
-                <div class="metric"><span>預期報酬</span><strong>9.6%</strong></div>
-                <div class="metric"><span>VaR</span><strong>7.1%</strong></div>
-                <div class="metric"><span>H 值</span><strong>0.61</strong></div>
-              </div>
-            </div>
-
-            <div class="data-card featured">
-              <div class="data-top">
-                <div><div class="data-name">老師選股 Top10</div><div class="data-sub">課程示範組合</div></div>
-                <div class="data-tag">報酬效率最佳</div>
-              </div>
-              <div class="data-grid">
-                <div class="metric"><span>預期報酬</span><strong>15.3%</strong></div>
-                <div class="metric"><span>VaR</span><strong>8.0%</strong></div>
-                <div class="metric"><span>H 值</span><strong>0.73</strong></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-  </main>
-
-  <script>
-    const tabs = document.querySelectorAll('.tab');
-    const views = document.querySelectorAll('.view');
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.target;
-
-        tabs.forEach((item) => item.classList.remove('active'));
-        views.forEach((view) => view.classList.remove('active'));
-
-        tab.classList.add('active');
-        document.getElementById(target).classList.add('active');
-      });
-    });
-  </script>
+</div>
 </body>
 </html>
